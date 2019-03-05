@@ -22,12 +22,10 @@ esc1.write(25);
 esc2.write(25);
 esc3.write(25);
 delay(5000);
-
 }
 
 void loop()
 {
-
 esc0.write(40);
 esc1.write(40);
 esc2.write(40);
