@@ -19,8 +19,8 @@ void setup() {
 
 void loop() {
   val = pulseIn(2, HIGH, 100000000000000); 
-  adjPower = map(val, 1000, 2000, 1000, 1500);
-  potValue = map(adjPower, 1000, 1500, 0, 180);
+  adjPower = map(val, 995, 2000, 995, 1400);
+  potValue = map(adjPower, 995, 1400, 0, 180);
   Serial.print(val);
   Serial.print(" ");
   Serial.print(adjPower);
