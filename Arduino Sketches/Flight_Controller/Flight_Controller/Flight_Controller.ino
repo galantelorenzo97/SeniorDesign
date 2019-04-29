@@ -52,8 +52,8 @@ void loop() {
     Serial.print(" ");
     Serial.print(adjPower);
     Serial.print(" ");
-    Serial.println(potValue);
   */
+    Serial.println(potValueCH3);
 
   /****************************
     WRITE THROTTLE VALUES
@@ -72,6 +72,7 @@ void loop() {
     FrontCCW.write(maxLimit(potValueCH3 + 20, 180));
     RearCW.write(minLimit(potValueCH3 - 20, 40));
     RearCCW.write(maxLimit(potValueCH3 + 20, 180));
+    Serial.println("CCW Rotation");
     valCH4 = pulseIn(CH4_yaw, HIGH, 100000000);
   }
 
@@ -82,6 +83,7 @@ void loop() {
     FrontCCW.write(minLimit(potValueCH3 - 20, 40));
     RearCW.write(maxLimit(potValueCH3 + 20, 180));
     RearCCW.write(minLimit(potValueCH3 - 20, 40));
+    Serial.println("CW Rotation");
     valCH4 = pulseIn(CH4_yaw, HIGH, 100000000);
   }
 
@@ -92,6 +94,7 @@ void loop() {
     FrontCCW.write(maxLimit(potValueCH3 + 20, 180));
     RearCW.write(minLimit(potValueCH3 - 20, 40));
     RearCCW.write(minLimit(potValueCH3 - 20, 40));
+    Serial.println("Back");
     valCH2 = pulseIn(CH2_pitch, HIGH, 100000000);
   }
 
@@ -102,6 +105,7 @@ void loop() {
     FrontCCW.write(minLimit(potValueCH3 - 20, 40));
     RearCW.write(maxLimit(potValueCH3 + 20, 180));
     RearCCW.write(maxLimit(potValueCH3 + 20, 180));
+    Serial.println("Forwards");
     valCH2 = pulseIn(CH2_pitch, HIGH, 100000000);
   }
 
@@ -112,16 +116,18 @@ void loop() {
     FrontCCW.write(maxLimit(potValueCH3 + 20, 180));
     RearCW.write(maxLimit(potValueCH3 + 20, 180));
     RearCCW.write(minLimit(potValueCH3 - 20, 40));
+    Serial.println("BANK LEFT");
     valCH1 = pulseIn(CH1_roll, HIGH, 100000000);  
   }
 
-  //Tilt controls left (aka BANK LEFT)
+  //Tilt controls right (aka BANK RIGHT)+
   while (valCH1 > 1600)
   {
     FrontCW.write(maxLimit(potValueCH3 + 20, 180));
     FrontCCW.write(minLimit(potValueCH3 - 20, 40));
     RearCW.write(minLimit(potValueCH3 - 20, 40));
     RearCCW.write(maxLimit(potValueCH3 + 20, 180));
+    Serial.println("BANK RIGHT");
     valCH1 = pulseIn(CH1_roll, HIGH, 100000000);  
   }
 }
